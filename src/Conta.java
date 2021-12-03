@@ -1,9 +1,17 @@
 public abstract class Conta implements IConta {
 
+    private static final int AGENCIA_PADRAO = 1;
+    private static int SEQUENCIAL = 1;
+
+    public Conta() {
+        this.agencia = Conta.AGENCIA_PADRAO;
+        this.numero = SEQUENCIAL++;
+    }
+
     // Por padrão, atributos são sempre private
-    private String agencia;
-    private String numero;
-    private double saldo;
+    protected int agencia;
+    protected int numero;
+    protected double saldo;
 
     @Override
     public void sacar(double valor) {
@@ -21,11 +29,11 @@ public abstract class Conta implements IConta {
     }
 
     // Não faz sentido criar métodos setters para nossos atributos, então teremos apenas os getters.
-    public String getAgencia() {
+    public int getAgencia() {
         return agencia;
     }
 
-    public String getNumero() {
+    public int getNumero() {
         return numero;
     }
 
